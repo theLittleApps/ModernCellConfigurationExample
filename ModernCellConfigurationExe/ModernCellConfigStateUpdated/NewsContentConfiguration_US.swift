@@ -25,7 +25,7 @@ struct NewsContentConfiguration_US: UIContentConfiguration {
         var updatedConfig = self
         // when cell is selected, text color would turn to white
         if state.isSelected {
-            updatedConfig.textColor = .white
+            updatedConfig.textColor = .systemRed
         }else {
             updatedConfig.textColor = .black
         }

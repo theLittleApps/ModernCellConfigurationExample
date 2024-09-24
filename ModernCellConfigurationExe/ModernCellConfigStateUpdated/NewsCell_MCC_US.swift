@@ -16,19 +16,8 @@ class NewsCell_MCC_US: UITableViewCell {
     override func updateConfiguration(using state: UICellConfigurationState) {
         super.updateConfiguration(using: state)
         
-        // generate configuration for cell background
-        var backgroundConfig = backgroundConfiguration?.updated(for: state)
-        backgroundConfig?.backgroundColor = .white
-        
         // generate configuration for cell content based on cell's state
         let contentConfig = NewsContentConfiguration_US(news: a_news).updated(for: state)
-        
-        // when cell is selected, change cell's background color
-        if state.isSelected {
-            backgroundConfig?.backgroundColor = .red
-        }
-        
-        backgroundConfiguration = backgroundConfig
         contentConfiguration = contentConfig
     }
         
