@@ -1,14 +1,14 @@
 //
-//  NewsCell_MCC.swift
+//  NewsCell_MCC_US.swift
 //  ModernCellConfigurationExe
 //
-//  Created by YEN-JU HUANG on 2024/9/12.
+//  Created by YEN-JU HUANG on 2024/9/24.
 //
 
 import UIKit
 
-class NewsCell_MCC: UITableViewCell {
-    static let identifier = "NewsCell_MCC"
+class NewsCell_MCC_US: UITableViewCell {
+    static let identifier = "NewsCell_MCC_US"
     
     private var a_news = News(image: nil, title: nil, source: nil)
     
@@ -21,7 +21,7 @@ class NewsCell_MCC: UITableViewCell {
         backgroundConfig?.backgroundColor = .white
         
         // generate configuration for cell content based on cell's state
-        let contentConfig = NewsContentConfiguration(news: a_news).updated(for: state)
+        let contentConfig = NewsContentConfiguration_US(news: a_news).updated(for: state)
         
         // when cell is selected, change cell's background color
         if state.isSelected {
@@ -33,7 +33,7 @@ class NewsCell_MCC: UITableViewCell {
     }
         
     func set(news: News) {
-        contentConfiguration = NewsContentConfiguration(news: news)
+        contentConfiguration = NewsContentConfiguration_US(news: news)
         a_news = news
     }
 }

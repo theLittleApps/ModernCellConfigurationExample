@@ -28,6 +28,7 @@ class NewsListVC: UIViewController {
         // register cells
         tableView.register(NewsCell.self, forCellReuseIdentifier: NewsCell.identifier)
         tableView.register(NewsCell_MCC.self, forCellReuseIdentifier: NewsCell_MCC.identifier)
+        tableView.register(NewsCell_MCC_US.self, forCellReuseIdentifier: NewsCell_MCC_US.identifier)
         
         // set constraints
         tableView.pin(to: view)
@@ -46,12 +47,14 @@ extension NewsListVC: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // classic cell for custom cell in programming
-        /*
-        let cell = tableView.dequeueReusableCell(withIdentifier: NewsCell.identifier, for: indexPath) as! NewsCell
-         */
-        // modern cell for custom cell upon iOS 14
-        let cell = tableView.dequeueReusableCell(withIdentifier: NewsCell_MCC.identifier, for: indexPath) as! NewsCell_MCC
+        // classic cell configuration for custom cell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: NewsCell.identifier, for: indexPath) as! NewsCell
+        
+        // modern cell configueration for custom cell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: NewsCell_MCC.identifier, for: indexPath) as! NewsCell_MCC
+
+        // modern cell configueration for custom cell with its state updated
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewsCell_MCC_US.identifier, for: indexPath) as! NewsCell_MCC_US
         let a_news = news[indexPath.row]
         cell.set(news: a_news)
         

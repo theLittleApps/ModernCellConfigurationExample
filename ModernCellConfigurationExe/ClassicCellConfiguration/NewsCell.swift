@@ -1,56 +1,35 @@
 //
-//  NewsContentView.swift
+//  NewsCell.swift
 //  ModernCellConfigurationExe
 //
-//  Created by YEN-JU HUANG on 2024/9/12.
+//  Created by YEN-JU HUANG on 2024/9/11.
 //
 
 import UIKit
 
-class NewsContentView: UIView, UIContentView {
-    var configuration: any UIContentConfiguration {
-        didSet {
-            setStyle()
-        }
-    }
+class NewsCell: UITableViewCell {
     
-    private let newsImageView = UIImageView()
-    private var newsTitleLabel = UILabel()
-    private let newsSourceLabel = UILabel()
+    static let identifier = "NewsCell"
+
+    var newsImageView = UIImageView()
+    var newsTitleLabel = UILabel()
+    var newsSourceLabel = UILabel()
     
-    init(configuration: any UIContentConfiguration) {
-        self.configuration = configuration
-        super.init(frame: .zero)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         layoutViews()
-        setNews()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setNews() {
-        guard let config = configuration as? NewsContentConfiguration else {
-            return
-        }
-        
-        newsImageView.image = config.news.image
-        newsTitleLabel.text = config.news.title
-        newsSourceLabel.text = config.news.source
-    }
-    
-    private func setStyle() {
-        guard let config = configuration as? NewsContentConfiguration else {
-            return
-        }
-        
-        newsTitleLabel.textColor = config.textColor
-        newsSourceLabel.textColor = config.textColor
-    }
-        
     private func layoutViews() {
+        // add subviews
         addSubviews()
-        configureSubViews()
+        // configure subviews
+        configureSubviews()
+        // set constraints
         setConstraints()
     }
     
@@ -59,11 +38,17 @@ class NewsContentView: UIView, UIContentView {
         addSubview(newsTitleLabel)
         addSubview(newsSourceLabel)
     }
-
-    private func configureSubViews() {
+    
+    private func configureSubviews() {
         configureImageView()
         configureTitleLabel()
         configureSourceLabel()
+    }
+    
+    private func setConstraints() {
+        setImageViewConstraints()
+        setTitleLabelConstraints()
+        setSourceLabelConstraints()
     }
     
     private func configureImageView() {
@@ -81,12 +66,6 @@ class NewsContentView: UIView, UIContentView {
         newsSourceLabel.numberOfLines = 0
         newsSourceLabel.adjustsFontSizeToFitWidth = true
         newsSourceLabel.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
-    }
-    
-    private func setConstraints() {
-        setImageViewConstraints()
-        setTitleLabelConstraints()
-        setSourceLabelConstraints()
     }
     
     private func setImageViewConstraints() {
@@ -108,5 +87,11 @@ class NewsContentView: UIView, UIContentView {
         newsSourceLabel.translatesAutoresizingMaskIntoConstraints = false
         newsSourceLabel.leadingAnchor.constraint(equalTo: newsTitleLabel.leadingAnchor).isActive = true
         newsSourceLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12.0).isActive = true
+    }
+    
+    func set(news: News) {
+        newsImageView.image = news.image
+        newsTitleLabel.text = news.title
+        newsSourceLabel.text = news.source
     }
 }

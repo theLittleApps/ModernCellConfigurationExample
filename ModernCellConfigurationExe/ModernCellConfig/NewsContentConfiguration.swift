@@ -20,18 +20,6 @@ struct NewsContentConfiguration: UIContentConfiguration {
     
     // update different style based on cell's state
     func updated(for state: any UIConfigurationState) -> NewsContentConfiguration {
-        guard let state = state as? UICellConfigurationState else {
-            return self
-        }
-        
-        var updatedConfig = self
-        // when cell is selected, text color would turn to white
-        if state.isSelected {
-            updatedConfig.textColor = .white
-        }else {
-            updatedConfig.textColor = .black
-        }
-        
-        return updatedConfig
+        return self
     }
 }
