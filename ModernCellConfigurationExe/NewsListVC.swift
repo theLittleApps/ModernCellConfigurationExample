@@ -51,10 +51,10 @@ extension NewsListVC: UITableViewDataSource, UITableViewDelegate{
 //        let cell = tableView.dequeueReusableCell(withIdentifier: NewsCell.identifier, for: indexPath) as! NewsCell
         
         // modern cell configueration for custom cell
-//        let cell = tableView.dequeueReusableCell(withIdentifier: NewsCell_MCC.identifier, for: indexPath) as! NewsCell_MCC
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewsCell_MCC.identifier, for: indexPath) as! NewsCell_MCC
 
         // modern cell configueration for custom cell with its state updated
-        let cell = tableView.dequeueReusableCell(withIdentifier: NewsCell_MCC_US.identifier, for: indexPath) as! NewsCell_MCC_US
+//        let cell = tableView.dequeueReusableCell(withIdentifier: NewsCell_MCC_US.identifier, for: indexPath) as! NewsCell_MCC_US
         let a_news = news[indexPath.row]
         cell.set(news: a_news)
         

@@ -11,9 +11,6 @@ struct NewsContentConfiguration: UIContentConfiguration {
     // data
     let news: News
     
-    // ui style
-    var textColor: UIColor?
-    
     func makeContentView() -> any UIView & UIContentView {
         return NewsContentView(configuration: self)
     }
